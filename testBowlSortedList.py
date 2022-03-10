@@ -23,5 +23,5 @@ print("position of first blue : "+str(sortedList.first_bowl("blue")))
 print("position of 2nd blue : "+str(sortedList.keme_bowl(2,"blue")))
 
 #%% Test delete_bowls
-sortedList=sortedList.delete_bows("red")
+sortedList.delete_bows("red")
 print("After deleting red bowls : "+ str(sortedList))

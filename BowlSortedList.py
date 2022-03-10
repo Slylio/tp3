@@ -54,6 +54,7 @@ class BowlSortedList:
         probleme de suppression (suppression partielle 1/2) car ?on supprime le next en meme temps?
     """
     def delete_bows(self,color):    
+        """"
         for i in range(self.liste.size):    #on boucle i dans la liste
             if self.liste.get_at(i).data.color==color:  #si la boule a la position i a pour couleur celle qu'on veut
                 self.liste.delete_value(self.liste.get_at(i).data)  #on la delete
@@ -64,6 +65,14 @@ class BowlSortedList:
                     self.nbRouge-=1
                 elif color =="blue":
                     self.nbBleu-=1
-        return self  
-            
+        """
+        if self.count_color(color)>0:
+            for i in range (self.count_color(color)):
+                self.liste.delete_value(color)
+                if color=="green":  
+                    self.nbVert-=1
+                elif color== "red":
+                    self.nbRouge-=1
+                elif color =="blue":
+                    self.nbBleu-=1
 
