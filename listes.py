@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 from tkinter import N
-from numpy import size
-
 
 class Liste:
     """ The class Liste allows to represent a list from chained elements of type Cell. Each element of the 
@@ -125,9 +123,27 @@ class Liste:
         output  -- self in which the element of value v has been deleted
                     the size of the list is updated 
         """
-        """
+        if self.size ==1 and self.mfirst.data==v:
+            self.mfirst=None
+        else :
+            if self.mfirst.data==v:
+                self.mfirst=self.mfirst.next
+            else :
+                i=1
+                p=self.mfirst
+                c=Cell()
+                hit=False
+                while not hit and i<self.size:
+                    m=p
+                    p=p.next
+                    if p.data == v:
+                        m.next=p.next
+                        hit=True
+                    i+=1
+        self.size-=1
+        return self
             
-        """
+
        
         
                             
@@ -168,7 +184,7 @@ class Liste:
                     self is not modified
         """  
         for i in range(self.size):
-            self.get_value+=1
+            self.get_at(i).data=f(self.get_at(i).data)
         return self
     
     def count(self, v):
@@ -193,6 +209,7 @@ class Liste:
         for i in range (self.size):
             if f(self.get_value(i))==False:
                 self.delete_value(i)
+                self.size+=1
         return self 
     
     def reduce(self, f,x):
@@ -202,9 +219,13 @@ class Liste:
                 -- x : initial value of type object
         output  -- final value of type object
         """
-        #TODO
-        return None
-                    
+        y = self.mfirst
+        result = f(x,y.data)
+        for i in range(self.size-1):
+            y=y.next
+            result=f(result, y.data)
+        return result
+        
 class Cell():
     """ The class Cell represents an element of the list. It contains 2 attributes: a data of type object and a link to the next element
     """

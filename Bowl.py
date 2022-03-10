@@ -6,4 +6,5 @@ class Bowl :
             print("Choisissez une couleur correcte (red, blue, green)")
     
     def __str__(self):
-        print(self.color)
+        if self.color!=None:
+            return(str(self.color))
