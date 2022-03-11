@@ -42,6 +42,9 @@ L.insert_at(2,1)
 L.insert_at(3,2)
 L.insert_at(4,3)
 L.insert_at(5,4)
+L.insert_at(0,3)
+L.insert_at(3,0)
+
 print("L :", L)
 
 # %% Test de la méthode delete_value

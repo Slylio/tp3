@@ -94,13 +94,16 @@ class Liste:
         """
         if i==0:
             self.insert_first(v)
-        cToInsert=Cell()
-        cToInsert.data=v
-        c1=self.get_at(i-1)
-        c2=c1.next 
-        c1.next=cToInsert
-        cToInsert.next=c2
-        self.size+=1
+        else :
+            cToInsert=Cell()
+            cToInsert.data=v
+            
+            c1=self.get_at(i-1)
+            c2=c1.next 
+            
+            c1.next=cToInsert
+            cToInsert.next=c2
+            self.size+=1
         return self
 
     def insert_last(self,v):  
@@ -206,11 +209,11 @@ class Liste:
                 pre-cond: verify that f returns True or False
         output  -- lfilter: new Liste of elements whose values verify f(x) = True
         """
+        result=Liste()
         for i in range (self.size):
-            if f(self.get_value(i))==False:
-                self.delete_value(i)
-                self.size+=1
-        return self 
+            if f(self.get_value(i))==True:
+                result.insert_first(self.get_value(i))
+        return result 
     
     def reduce(self, f,x):
         """ Returns the value obtained by applying the function f(x,y) to each value y of Liste self

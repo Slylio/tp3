@@ -13,20 +13,21 @@ class BowlSortedList:
         return str(self.liste)
     
     def insert_bowl(self, bowl):
-        if bowl.color=="bleu":  #si la couleur de la boule est bleue
-            self.liste.insert_last(bowl)    #on l'insère en dernier
-            self.nbBleu+=1  #on signale qu'on a ajouté une boule bleue
-        elif (bowl.color=="red"):   #si la boule est rouge alors on l'ajoute...
-            self.liste.insert_first(bowl)   #...en premier
+        if bowl.color=="blue":  #si la couleur de la boule est bleue
+            self.liste.insert_last(bowl)
+            self.nbBleu+=1
+        elif (bowl.color=="red"):
+            self.liste.insert_first(bowl)
             self.nbRouge+=1
         else :
-            self.liste.insert_at(bowl, self.nbRouge)    #sinon on l'ajoute après les boules rougers car les vertes sont entre les rouges et les bleueus
+            self.liste.insert_at(bowl, self.nbRouge)
+            print(self.nbRouge)
             self.nbVert+=1
 
     def init_bowls(self,n): 
         for i in range (n):
-            couleurs=["red","green","blue"] 
-            bowlToInsert=Bowl.Bowl(couleurs[randint(0,2)])                #on crée la boule de couleur aléatoire
+            couleurs=["red","blue","green"] 
+            bowlToInsert=Bowl.Bowl(couleurs[randint(0,2)])#on crée la boule de couleur aléatoire
             self.insert_bowl(bowlToInsert)  #on l'insère
 
 
@@ -54,7 +55,6 @@ class BowlSortedList:
         probleme de suppression (suppression partielle 1/2) car ?on supprime le next en meme temps?
     """
     def delete_bows(self,color):    
-        """"
         for i in range(self.liste.size):    #on boucle i dans la liste
             if self.liste.get_at(i).data.color==color:  #si la boule a la position i a pour couleur celle qu'on veut
                 self.liste.delete_value(self.liste.get_at(i).data)  #on la delete
@@ -65,14 +65,5 @@ class BowlSortedList:
                     self.nbRouge-=1
                 elif color =="blue":
                     self.nbBleu-=1
-        """
-        if self.count_color(color)>0:
-            for i in range (self.count_color(color)):
-                self.liste.delete_value(color)
-                if color=="green":  
-                    self.nbVert-=1
-                elif color== "red":
-                    self.nbRouge-=1
-                elif color =="blue":
-                    self.nbBleu-=1
+    
 

@@ -8,10 +8,10 @@ print(bowl)
 # %% Test création  SortedListOfBowls
 sortedList=BowlSortedList.BowlSortedList()
 sortedList.init_bowls(4)
-print(sortedList)
+print("init :"+str(sortedList))
 #%% Test insert_bowl
 sortedList.insert_bowl(bowl)
-print(sortedList)
+print("insert bleu"+str(sortedList))
 
 #%%Test count_color
 print("number of reds : "+str(sortedList.count_color("red")))
